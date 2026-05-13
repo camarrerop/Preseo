@@ -439,6 +439,81 @@
     }
     .err-msg.show { display: block; }
 
+
+    /* ── email popup ── */
+    .popup-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,0.75);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(6px);
+    }
+    .popup-overlay.hide { display: none; }
+    .popup-box {
+      background: #111;
+      border: 1px solid rgba(240,41,90,0.3);
+      border-radius: 20px;
+      padding: 36px 28px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+    .popup-glow {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 32px rgba(240,41,90,0.4);
+    }
+    .popup-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px; font-weight: 900;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .popup-sub {
+      font-size: 13px; color: rgba(255,255,255,0.45);
+      line-height: 1.6; margin-bottom: 24px;
+    }
+    .popup-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px; color: #fff;
+      outline: none; margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+    .popup-input::placeholder { color: rgba(255,255,255,0.25); }
+    .popup-input:focus { border-color: var(--pink); }
+    .popup-btn {
+      width: 100%; padding: 14px;
+      background: linear-gradient(135deg, var(--pink), #c41f48);
+      border: none; border-radius: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #fff; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(240,41,90,0.3);
+      transition: all 0.2s;
+    }
+    .popup-btn:hover { transform: translateY(-1px); }
+    .popup-skip {
+      margin-top: 14px;
+      font-size: 12px; color: rgba(255,255,255,0.25);
+      cursor: pointer; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+      transition: color 0.2s;
+    }
+    .popup-skip:hover { color: rgba(255,255,255,0.5); }
+
     @media (max-width: 380px) {
       .promoter-grid { grid-template-columns: 1fr 1fr; }
       .field-row { grid-template-columns: 1fr; }
@@ -446,6 +521,27 @@
   </style>
 </head>
 <body>
+
+<!-- EMAIL POPUP -->
+<div class="popup-overlay" id="emailPopup">
+  <div class="popup-box">
+    <div class="popup-glow">🎉</div>
+    <div class="popup-title">¡Únete a la lista VIP!</div>
+    <p class="popup-sub">Déjanos tu correo y sé el primero en enterarte de nuestros próximos eventos.</p>
+    <input class="popup-input" type="email" id="popupEmail" placeholder="tucorreo@gmail.com"/>
+    <button class="popup-btn" onclick="submitPopupEmail()">Quiero estar en la lista</button>
+    <div class="popup-skip" onclick="closePopup()">No gracias, continuar al registro</div>
+  </div>
+</div>
+
+<!-- Hidden form for Netlify Forms detection -->
+<form name="preseo-registro" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="nombre"/>
+  <input type="text" name="apellido"/>
+  <input type="text" name="cedula"/>
+  <input type="text" name="genero"/>
+  <input type="text" name="promotor"/>
+</form>
 <div class="page">
 
   <!-- HEADER -->
@@ -455,9 +551,10 @@
     <div class="divider"></div>
     <p class="tagline">Ibérico Gastrobar · Jueves 15 de Mayo</p>
     <div class="event-meta">
-      <div class="meta-chip">Barra Libre <span>Hasta 12AM</span></div>
+      <div class="meta-chip">Barra Libre <span>Hasta 12:30AM</span></div>
       <div class="meta-chip">Mujeres <span>Free Cover</span></div>
       <div class="meta-chip">DJ <span>Miguel Ramos</span></div>
+      <div class="meta-chip">DJ <span>Ryzio</span></div>
     </div>
   </header>
 
@@ -550,12 +647,16 @@
 <script>
   // ── Promoters list — edit freely ──
   const PROMOTERS = [
-    { name: "Carlos M.",   role: "Promotor" },
-    { name: "Andrés V.",   role: "Promotor" },
-    { name: "Daniela R.",  role: "Promotora" },
-    { name: "Sebastián L.", role: "Promotor" },
-    { name: "Valeria P.",  role: "Promotora" },
-    { name: "Diego F.",    role: "Promotor" },
+    { name: "Ángel Bracovichi",    role: "Promotor" },
+    { name: "Miguel Ramos",        role: "Promotor" },
+    { name: "Sammy Esqueda",       role: "Promotor" },
+    { name: "Carlos Ruiloba",      role: "Promotor" },
+    { name: "Jhosue Petit",        role: "Promotor" },
+    { name: "Gabriel Pi",          role: "Promotor" },
+    { name: "Clarissa Ruan",       role: "Promotora" },
+    { name: "Gustavo Velázquez",   role: "Promotor" },
+    { name: "Esteban Correa",      role: "Promotor" },
+    { name: "Carlos Manaure",      role: "Promotor" },
   ];
 
   let selectedPromoter = null;
@@ -594,6 +695,8 @@
     });
     document.getElementById('generoErr').classList.remove('show');
   }
+
+  const SHEETBEST_URL = 'https://api.sheetbest.com/sheets/25c62f7d-a3e6-4e26-90e5-81b438864b6a';
 
   function submitForm() {
     let valid = true;
@@ -641,8 +744,32 @@
 
     if (!valid) return;
 
-    // Show success
+    // Disable button & show loading
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
     const p = PROMOTERS[selectedPromoter];
+
+    // Submit via Sheet.best directly to Google Sheets
+    const payload = {
+      Timestamp: new Date().toLocaleString(),
+      nombre: String(nombre),
+      Apellido: String(apellido),
+      Cedula: String(cedula),
+      Genero: String(selectedGender),
+      Promotor: String(p.name)
+    };
+    fetch(SHEETBEST_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(() => showSuccess(nombre, apellido, cedula, p.name))
+      .catch(() => showSuccess(nombre, apellido, cedula, p.name));
+  }
+
+  function showSuccess(nombre, apellido, cedula, promotorName) {
     const coverText = selectedGender === 'mujer' ? 'Free Cover ✨' : '$12 Cover';
 
     document.getElementById('successCard').innerHTML = `
@@ -656,7 +783,7 @@
       </div>
       <div class="success-row">
         <span class="success-row-label">Promotor</span>
-        <span class="success-row-val" style="color:var(--pink)">${p.name}</span>
+        <span class="success-row-val" style="color:var(--pink)">${promotorName}</span>
       </div>
       <div class="success-row">
         <span class="success-row-label">Cover</span>
@@ -667,6 +794,24 @@
     document.getElementById('formArea').classList.add('hide');
     document.getElementById('successScreen').classList.add('show');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Email popup ──
+  function closePopup() {
+    document.getElementById('emailPopup').classList.add('hide');
+  }
+
+  function submitPopupEmail() {
+    const email = document.getElementById('popupEmail').value.trim();
+    if (email && email.includes('@')) {
+      const emailUrl = SHEETBEST_URL + '/tabs/Emails';
+      fetch(emailUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ Email: email, Timestamp: new Date().toLocaleString() })
+      }).catch(() => {});
+    }
+    closePopup();
   }
 </script>
 </body>
