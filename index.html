@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
     :root {
       --pink:   #f0295a;
       --gold:   #e8922a;
@@ -16,7 +16,7 @@
       --card:   #111111;
       --border: rgba(240,41,90,0.25);
     }
-
+ 
     body {
       background: var(--dark);
       color: #fff;
@@ -24,7 +24,7 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
+ 
     /* ── ambient glow blobs ── */
     body::before, body::after {
       content: '';
@@ -44,7 +44,7 @@
       background: radial-gradient(circle, rgba(232,146,42,0.14) 0%, transparent 70%);
       bottom: 0; right: -100px;
     }
-
+ 
     /* ── layout ── */
     .page {
       position: relative;
@@ -53,10 +53,10 @@
       margin: 0 auto;
       padding: 48px 24px 64px;
     }
-
+ 
     /* ── header ── */
     .header { text-align: center; margin-bottom: 40px; }
-
+ 
     .eyebrow {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 13px;
@@ -65,7 +65,7 @@
       text-transform: uppercase;
       margin-bottom: 10px;
     }
-
+ 
     .logo {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: clamp(72px, 22vw, 110px);
@@ -75,14 +75,14 @@
       line-height: 0.9;
       text-transform: uppercase;
     }
-
+ 
     .divider {
       width: 48px; height: 3px;
       background: linear-gradient(90deg, var(--pink), var(--gold));
       border-radius: 2px;
       margin: 16px auto;
     }
-
+ 
     .tagline {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 13px;
@@ -90,7 +90,7 @@
       color: rgba(255,255,255,0.45);
       text-transform: uppercase;
     }
-
+ 
     .event-meta {
       display: flex;
       justify-content: center;
@@ -109,10 +109,10 @@
       color: rgba(255,255,255,0.5);
     }
     .meta-chip span { color: var(--gold); }
-
+ 
     /* ── promoter select ── */
     .promoter-section { margin-bottom: 32px; }
-
+ 
     .section-label {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 11px;
@@ -121,13 +121,13 @@
       text-transform: uppercase;
       margin-bottom: 14px;
     }
-
+ 
     .promoter-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
       gap: 10px;
     }
-
+ 
     .promoter-btn {
       background: transparent;
       border: 1px solid var(--border);
@@ -149,14 +149,14 @@
     }
     .promoter-btn:hover::before { opacity: 1; }
     .promoter-btn:hover { border-color: rgba(240,41,90,0.5); }
-
+ 
     .promoter-btn.active {
       border-color: var(--pink);
       background: rgba(240,41,90,0.08);
     }
     .promoter-btn.active::before { opacity: 1; }
     .promoter-btn.active .check { opacity: 1; transform: scale(1); }
-
+ 
     .check {
       position: absolute;
       top: 8px; right: 8px;
@@ -169,7 +169,7 @@
       transform: scale(0.5);
       transition: all 0.2s ease;
     }
-
+ 
     .promoter-name {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 15px;
@@ -186,7 +186,7 @@
       text-transform: uppercase;
       margin-top: 3px;
     }
-
+ 
     /* ── selected promoter banner ── */
     .selected-banner {
       background: rgba(240,41,90,0.07);
@@ -221,7 +221,7 @@
       text-transform: uppercase;
       color: #fff;
     }
-
+ 
     /* ── form card ── */
     .form-card {
       background: var(--card);
@@ -230,10 +230,10 @@
       padding: 28px 24px;
       margin-bottom: 20px;
     }
-
+ 
     .field { margin-bottom: 20px; }
     .field:last-child { margin-bottom: 0; }
-
+ 
     .field-label {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 11px;
@@ -243,7 +243,7 @@
       margin-bottom: 8px;
       display: block;
     }
-
+ 
     .field input, .field select {
       width: 100%;
       background: rgba(255,255,255,0.04);
@@ -263,10 +263,10 @@
       background: rgba(240,41,90,0.05);
     }
     .field select option { background: #1a1a1a; color: #fff; }
-
+ 
     /* ── row ── */
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
-
+ 
     /* ── gender toggle ── */
     .gender-toggle {
       display: grid;
@@ -293,7 +293,7 @@
       color: rgba(255,255,255,0.5);
     }
     .gender-btn.active .g-label { color: var(--pink); }
-
+ 
     /* ── submit button ── */
     .submit-btn {
       width: 100%;
@@ -320,7 +320,7 @@
     }
     .submit-btn:active { transform: translateY(0); }
     .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
+ 
     /* ── info strip ── */
     .info-strip {
       display: grid;
@@ -352,7 +352,7 @@
     }
     .pink { color: var(--pink); }
     .gold { color: var(--gold); }
-
+ 
     /* ── success state ── */
     .success-screen {
       display: none;
@@ -361,7 +361,7 @@
     }
     .success-screen.show { display: block; }
     .form-area.hide { display: none; }
-
+ 
     .success-icon {
       width: 72px; height: 72px;
       background: linear-gradient(135deg, var(--pink), var(--gold));
@@ -415,7 +415,7 @@
       text-transform: uppercase;
       color: #fff;
     }
-
+ 
     /* ── footer ── */
     .footer {
       text-align: center;
@@ -426,7 +426,7 @@
       text-transform: uppercase;
       color: rgba(255,255,255,0.15);
     }
-
+ 
     /* ── validation ── */
     .field input.error { border-color: var(--pink); }
     .err-msg {
@@ -438,8 +438,8 @@
       letter-spacing: 0.1em;
     }
     .err-msg.show { display: block; }
-
-
+ 
+ 
     /* ── email popup ── */
     .popup-overlay {
       position: fixed; inset: 0; z-index: 100;
@@ -513,7 +513,7 @@
       transition: color 0.2s;
     }
     .popup-skip:hover { color: rgba(255,255,255,0.5); }
-
+ 
     @media (max-width: 380px) {
       .promoter-grid { grid-template-columns: 1fr 1fr; }
       .field-row { grid-template-columns: 1fr; }
@@ -521,7 +521,7 @@
   </style>
 </head>
 <body>
-
+ 
 <!-- EMAIL POPUP -->
 <div class="popup-overlay" id="emailPopup">
   <div class="popup-box">
@@ -533,7 +533,7 @@
     <div class="popup-skip" onclick="closePopup()">No gracias, continuar al registro</div>
   </div>
 </div>
-
+ 
 <!-- Hidden form for Netlify Forms detection -->
 <form name="preseo-registro" netlify netlify-honeypot="bot-field" hidden>
   <input type="text" name="nombre"/>
@@ -543,7 +543,7 @@
   <input type="text" name="promotor"/>
 </form>
 <div class="page">
-
+ 
   <!-- HEADER -->
   <header class="header">
     <p class="eyebrow">El Jueves Es Nuestro</p>
@@ -557,7 +557,7 @@
       <div class="meta-chip">DJ <span>Ryzio</span></div>
     </div>
   </header>
-
+ 
   <!-- INFO TILES -->
   <div class="info-strip">
     <div class="info-tile">
@@ -569,10 +569,10 @@
       <div class="info-tile-value gold">Free Cover</div>
     </div>
   </div>
-
+ 
   <!-- FORM AREA -->
   <div class="form-area" id="formArea">
-
+ 
     <!-- PROMOTER SELECTOR -->
     <div class="promoter-section">
       <p class="section-label">¿De parte de qué promotor vienes?</p>
@@ -588,11 +588,11 @@
       </div>
       <p class="err-msg" id="promoterErr" style="margin-top:10px;">Selecciona un promotor</p>
     </div>
-
+ 
     <!-- DATOS PERSONALES -->
     <div class="form-card">
       <p class="section-label" style="margin-bottom:20px;">Tus datos</p>
-
+ 
       <div class="field-row">
         <div class="field">
           <label class="field-label" for="nombre">Nombre</label>
@@ -605,13 +605,13 @@
           <p class="err-msg" id="apellidoErr">Ingresa tu apellido</p>
         </div>
       </div>
-
+ 
       <div class="field">
         <label class="field-label" for="cedula">Número de Cédula</label>
         <input type="text" id="cedula" placeholder="0000000000" inputmode="numeric" maxlength="13"/>
         <p class="err-msg" id="cedulaErr">Ingresa un número de cédula válido</p>
       </div>
-
+ 
       <div class="field">
         <label class="field-label">Género</label>
         <div class="gender-toggle">
@@ -627,12 +627,12 @@
         <p class="err-msg" id="generoErr">Selecciona tu género</p>
       </div>
     </div>
-
+ 
     <button class="submit-btn" id="submitBtn" onclick="submitForm()">
       Confirmar Asistencia
     </button>
   </div>
-
+ 
   <!-- SUCCESS -->
   <div class="success-screen" id="successScreen">
     <div class="success-icon">✓</div>
@@ -640,10 +640,10 @@
     <p class="success-sub">Tu registro fue confirmado. Te esperamos el jueves en Ibérico Gastrobar.</p>
     <div class="success-card" id="successCard"></div>
   </div>
-
+ 
   <footer class="footer">PRESEO · Ibérico Gastrobar · Mayo 2025</footer>
 </div>
-
+ 
 <script>
   // ── Promoters list — edit freely ──
   const PROMOTERS = [
@@ -657,12 +657,14 @@
     { name: "Gustavo Velázquez",   role: "Promotor" },
     { name: "Esteban Correa",      role: "Promotor" },
     { name: "Carlos Manaure",      role: "Promotor" },
-    { name: "Carlos Martinis",    role: "Promotor" },
+    { name: "Oreste",              role: "Promotor" },
+    { name: "Cristian Calak",      role: "Promotor" },
+    { name: "Diana Corredor",      role: "Promotora" },
   ];
-
+ 
   let selectedPromoter = null;
   let selectedGender   = null;
-
+ 
   // Build promoter grid
   const grid = document.getElementById('promoterGrid');
   PROMOTERS.forEach((p, i) => {
@@ -677,7 +679,7 @@
     `;
     grid.appendChild(btn);
   });
-
+ 
   function selectPromoter(i) {
     selectedPromoter = i;
     document.querySelectorAll('.promoter-btn').forEach((b, idx) => {
@@ -688,7 +690,7 @@
     document.getElementById('selectedBanner').classList.add('show');
     document.getElementById('promoterErr').classList.remove('show');
   }
-
+ 
   function selectGender(g) {
     selectedGender = g;
     document.querySelectorAll('.gender-btn').forEach(b => {
@@ -696,21 +698,21 @@
     });
     document.getElementById('generoErr').classList.remove('show');
   }
-
-  const SHEETBEST_URL = 'https://api.sheetbest.com/sheets/25c62f7d-a3e6-4e26-90e5-81b438864b6a';
-
+ 
+  const SHEETBEST_URL = 'https://api.sheetbest.com/sheets/86e7f95c-b2e7-4894-91fb-d5576125544b';
+ 
   function submitForm() {
     let valid = true;
-
+ 
     if (selectedPromoter === null) {
       document.getElementById('promoterErr').classList.add('show');
       valid = false;
     }
-
+ 
     const nombre   = document.getElementById('nombre').value.trim();
     const apellido = document.getElementById('apellido').value.trim();
     const cedula   = document.getElementById('cedula').value.trim();
-
+ 
     if (!nombre) {
       document.getElementById('nombre').classList.add('error');
       document.getElementById('nombreErr').classList.add('show');
@@ -719,7 +721,7 @@
       document.getElementById('nombre').classList.remove('error');
       document.getElementById('nombreErr').classList.remove('show');
     }
-
+ 
     if (!apellido) {
       document.getElementById('apellido').classList.add('error');
       document.getElementById('apellidoErr').classList.add('show');
@@ -728,7 +730,7 @@
       document.getElementById('apellido').classList.remove('error');
       document.getElementById('apellidoErr').classList.remove('show');
     }
-
+ 
     if (!cedula || cedula.length < 6 || !/^\d+$/.test(cedula)) {
       document.getElementById('cedula').classList.add('error');
       document.getElementById('cedulaErr').classList.add('show');
@@ -737,21 +739,21 @@
       document.getElementById('cedula').classList.remove('error');
       document.getElementById('cedulaErr').classList.remove('show');
     }
-
+ 
     if (!selectedGender) {
       document.getElementById('generoErr').classList.add('show');
       valid = false;
     }
-
+ 
     if (!valid) return;
-
+ 
     // Disable button & show loading
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = 'Enviando...';
-
+ 
     const p = PROMOTERS[selectedPromoter];
-
+ 
     // Submit via Sheet.best directly to Google Sheets
     const payload = {
       Timestamp: new Date().toLocaleString(),
@@ -769,10 +771,10 @@
       .then(() => showSuccess(nombre, apellido, cedula, p.name))
       .catch(() => showSuccess(nombre, apellido, cedula, p.name));
   }
-
+ 
   function showSuccess(nombre, apellido, cedula, promotorName) {
     const coverText = selectedGender === 'mujer' ? 'Free Cover ✨' : '$12 Cover';
-
+ 
     document.getElementById('successCard').innerHTML = `
       <div class="success-row">
         <span class="success-row-label">Nombre</span>
@@ -791,17 +793,17 @@
         <span class="success-row-val" style="color:var(--gold)">${coverText}</span>
       </div>
     `;
-
+ 
     document.getElementById('formArea').classList.add('hide');
     document.getElementById('successScreen').classList.add('show');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
+ 
   // ── Email popup ──
   function closePopup() {
     document.getElementById('emailPopup').classList.add('hide');
   }
-
+ 
   function submitPopupEmail() {
     const email = document.getElementById('popupEmail').value.trim();
     if (email && email.includes('@')) {
